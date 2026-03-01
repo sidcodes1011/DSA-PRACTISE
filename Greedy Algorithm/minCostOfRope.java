@@ -1,3 +1,6 @@
+// Question
+// Given an array, arr[] of rope lengths, connect all ropes into a single rope with the minimum total cost. The cost to connect two ropes is the sum of their lengths. 
+
 import java.util.PriorityQueue;
 
 public class minCostOfRope {
