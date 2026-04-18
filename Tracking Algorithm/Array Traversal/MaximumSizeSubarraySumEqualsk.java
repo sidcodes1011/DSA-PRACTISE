@@ -13,7 +13,7 @@ import java.util.*;
 
 public class MaximumSizeSubarraySumEqualsk {
 
-    // Brute forcwe approach Time Complexity O(n^2)
+    // Brute force approach Time Complexity O(n^2)
     // public static int maxSubArrayLen(int[] nums, int k) {
     //     int maxLength = 0;
     //     int lengthTemp = 0;
@@ -31,6 +31,7 @@ public class MaximumSizeSubarraySumEqualsk {
     //     }
     //     return maxLength;
     // }
+    // Optimize code with Time Complexity O(n)
     public static int maxSubArrayLen(int[] nums, int k) {
         Map<Integer, Integer> map = new HashMap<>();
         map.put(0, -1);
@@ -67,3 +68,11 @@ public class MaximumSizeSubarraySumEqualsk {
         }
     }
 }
+/*
+===================== 🔥 QUICK RECAP =====================
+Prefix Sum + HashMap (frequency)
+Track running sum → check (sum - k)
+If exists, add its frequency to count
+Update map with current sum
+Time: O(n) | Space: O(n)
+*/
