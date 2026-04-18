@@ -2,20 +2,21 @@
 Problem Statement
 
 Given the root of a binary tree, return the level order traversal of its nodes' values.
-*/
+ */
 import java.util.*;
 
 public class LevelOrderBFS {
 
-	 public static String printQueue(Queue<TreeNodeLBS> queue) {
-	        List<Integer> list = new ArrayList<>();
+    public static String printQueue(Queue<TreeNodeLBS> queue) {
+        List<Integer> list = new ArrayList<>();
 
-	        for (TreeNodeLBS node : queue) {
-	            list.add(node.val);
-	        }
+        for (TreeNodeLBS node : queue) {
+            list.add(node.val);
+        }
 
-	        return list.toString();
-	    }
+        return list.toString();
+    }
+
     public static List<List<Integer>> levelOrder(TreeNodeLBS root) {
 
         List<List<Integer>> result = new ArrayList<>();
@@ -26,18 +27,18 @@ public class LevelOrderBFS {
 
         Queue<TreeNodeLBS> queue = new LinkedList<>();
         queue.offer(root);
-        
+
         System.out.println("Initial Queue: " + printQueue(queue));
 
         while (!queue.isEmpty()) {
 
             int size = queue.size(); // number of nodes in current level
-            
-            System.out.println("size :::"+size);
+
+            System.out.println("size :::" + size);
             List<Integer> level = new ArrayList<>();
 
             for (int i = 0; i < size; i++) {
-            	TreeNodeLBS current = queue.poll();
+                TreeNodeLBS current = queue.poll();
                 level.add(current.val);
 
                 if (current.left != null) {
@@ -63,9 +64,8 @@ public class LevelOrderBFS {
               2   3
              / \   \
             4   5   6
-        */
-
-    	TreeNodeLBS root = new TreeNodeLBS(1);
+         */
+        TreeNodeLBS root = new TreeNodeLBS(1);
         root.left = new TreeNodeLBS(2);
         root.right = new TreeNodeLBS(3);
         root.left.left = new TreeNodeLBS(4);
@@ -77,9 +77,10 @@ public class LevelOrderBFS {
 }
 
 class TreeNodeLBS {
+
     int val;
     TreeNodeLBS left, right;
-    
+
     TreeNodeLBS(int val) {
         this.val = val;
     }
@@ -132,5 +133,4 @@ Use this pattern when:
 - You need tree depth / level based tree problems
 
 ========================================
-*/
-
+ */

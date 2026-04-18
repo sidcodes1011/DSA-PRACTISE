@@ -13,14 +13,15 @@ Return the minimum number of transformations
 needed to change beginWord into endWord.
 
 If no transformation is possible, return 0.
-*/
+ */
 
 import java.util.*;
 
 public class WordLadder {
-	
-	final static String RED = "\u001B[31m";
-	final static String RESET = "\u001B[0m";
+
+    final static String RED = "\u001B[31m";
+    final static String RESET = "\u001B[0m";
+
     // Generate all words differing by one letter
     private static List<String> getNeighbors(String word) {
         List<String> neighbors = new ArrayList<>();
@@ -31,7 +32,9 @@ public class WordLadder {
         for (int i = 0; i < chars.length; i++) {
             char original = chars[i];
             for (char c = 'a'; c <= 'z'; c++) {
-                if (c == original) continue;
+                if (c == original) {
+                    continue;
+                }
                 chars[i] = c;
                 neighbors.add(new String(chars));
             }
@@ -46,8 +49,9 @@ public class WordLadder {
 
     public static int ladderLength(String beginWord, String endWord, List<String> wordList) {
         Set<String> wordSet = new HashSet<>(wordList);
-        if (!wordSet.contains(endWord)) return 0; 		// endWord must be in the dictionary
-
+        if (!wordSet.contains(endWord)) {
+            return 0; 		// endWord must be in the dictionary
+        }
         Queue<String> beginQueue = new LinkedList<>(); 	// BFS queue starting from beginWord.
         Queue<String> endQueue = new LinkedList<>(); 	// BFS queue starting from endWord (for bidirectional BFS).
         Set<String> visited = new HashSet<>(); 			//keeps track of words we have already transformed 
@@ -59,10 +63,10 @@ public class WordLadder {
 
         int count = 1;
         while (!beginQueue.isEmpty() && !endQueue.isEmpty()) { // Loops till the queue is empty
-        	
-        	System.out.println(RED + "******************************** Iteration start " + count + " **************************************************************" + RESET);
-        	 System.out.println("Queue before processing Begin: " + beginQueue);
-        	 System.out.println("Queue before processing End: " + endQueue);
+
+            System.out.println(RED + "******************************** Iteration start " + count + " **************************************************************" + RESET);
+            System.out.println("Queue before processing Begin: " + beginQueue);
+            System.out.println("Queue before processing End: " + endQueue);
             // Swap queues so we always expand the smaller queue.
             if (beginQueue.size() > endQueue.size()) {
                 Queue<String> tempQ = beginQueue;
@@ -72,14 +76,14 @@ public class WordLadder {
             // Swap queues so we always expand the smaller queue.
 
             int size = beginQueue.size(); // Number of nodes at the current BFS level.
-            
-           System.out.println("Size :::" + size);
+
+            System.out.println("Size :::" + size);
             for (int i = 0; i < size; i++) {
                 String word = beginQueue.poll();
                 System.out.println("Polled word ::; " + word);
                 for (String neighbor : getNeighbors(word)) {
                     if (endQueue.contains(neighbor)) {
-                    	 System.out.println("Found connection via neighbor: " + neighbor);
+                        System.out.println("Found connection via neighbor: " + neighbor);
                         return step + 1; // Found connection
                     }
                     if (wordSet.contains(neighbor) && !visited.contains(neighbor)) {
@@ -89,8 +93,8 @@ public class WordLadder {
                 }
             }
             step++;
-           
-        	System.out.println(RED + "******************************** Iteration Ended " + count + " **************************************************************" + RESET);
+
+            System.out.println(RED + "******************************** Iteration Ended " + count + " **************************************************************" + RESET);
             System.out.println();
             count++;
 
@@ -102,9 +106,9 @@ public class WordLadder {
     public static void main(String[] args) {
         String beginWord = "hit";
         String endWord = "cog";
-        List<String> wordList = Arrays.asList("hot","dot","dog","lot","log","cog");
+        List<String> wordList = Arrays.asList("hot", "dot", "dog", "lot", "log", "cog");
 
-        System.out.println("Minimum number of transformations ::: " +ladderLength(beginWord, endWord, wordList)); // Output: 5
+        System.out.println("Minimum number of transformations ::: " + ladderLength(beginWord, endWord, wordList)); // Output: 5
     }
 }
 /*
@@ -151,5 +155,4 @@ L = word length
 Space Complexity:
 - O(N)
 ====================================================
-*/
-
+ */

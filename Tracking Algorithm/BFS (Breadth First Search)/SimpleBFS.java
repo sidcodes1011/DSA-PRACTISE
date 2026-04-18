@@ -2,7 +2,7 @@
 Problem Statement :::
 
 Given the root of a binary tree, return the values of the nodes in level order traversal from left to right.
-*/
+ */
 import java.util.*;
 
 public class SimpleBFS {
@@ -59,8 +59,7 @@ public class SimpleBFS {
               2   3
              / \   \
             4   5   6
-        */
-
+         */
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(2);
         root.right = new TreeNode(3);
@@ -73,6 +72,7 @@ public class SimpleBFS {
 }
 
 class TreeNode {
+
     int val;
     TreeNode left, right;
 
@@ -131,4 +131,4 @@ Use BFS when:
 - You need nearest/closest node type problems
 
 ========================================
-*/
+ */
