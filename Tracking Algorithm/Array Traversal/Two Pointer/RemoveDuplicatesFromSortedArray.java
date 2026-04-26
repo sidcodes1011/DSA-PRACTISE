@@ -1,4 +1,3 @@
-package localrun;
 
 /*
 Question:
@@ -18,25 +17,26 @@ Output: 2  (nums = [1,2,_])
 
 Input: nums = [0,0,1,1,1,2,2,3,3,4]
 Output: 5  (nums = [0,1,2,3,4,_...])
-*/
-
+ */
 public class RemoveDuplicatesFromSortedArray {
-    
+
     public static int removeDuplicates(int[] nums) {
-        if (nums.length == 0) return 0;
-    int left = 0;
-    for (int right = 1; right < nums.length; right++) {
-        if (nums[right] != nums[left]) {
-            left++;
-            nums[left] = nums[right];
+        if (nums.length == 0) {
+            return 0;
         }
-    }
-    return left + 1;
+        int left = 0;
+        for (int right = 1; right < nums.length; right++) {
+            if (nums[right] != nums[left]) {
+                left++;
+                nums[left] = nums[right];
+            }
+        }
+        return left + 1;
     }
 
     public static void main(String[] args) {
-        
-        int[] nums = {1,1,2};
+
+        int[] nums = {1, 1, 2};
 
         int result = removeDuplicates(nums);
 
@@ -55,5 +55,4 @@ Recap:
 - Only first k elements are important; rest can be ignored
 - Time Complexity: O(n)
 - Space Complexity: O(1)
-*/
-
+ */
